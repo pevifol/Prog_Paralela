@@ -6,7 +6,7 @@ int main(int argc, char *argv[]) { // mpi_alltoall.c
 
 int i, meu_ranque, num_procs;
 int* vetor_entrada;
-int vetor_saida
+int* vetor_saida;
 
 MPI_Init(&argc, &argv);
 MPI_Comm_rank(MPI_COMM_WORLD, &meu_ranque);
@@ -27,7 +27,6 @@ printf("%d,", vetor_entrada[i]);
 printf("\n");
 
 /* Reorganiza os dados */
-MPI_Barrier(MPI_COMM_WORLD);
 MPI_Alltoall(vetor_entrada, 2, MPI_INT, &vetor_saida, 2, MPI_INT,MPI_COMM_WORLD);
 /* Imprime a saida da função MPI_Alltoall */
 printf("Saida do processo %d: ", meu_ranque);
